@@ -2,7 +2,7 @@
 
 import React, { useState, FC, ReactNode } from 'react';
 import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowRight, UserPlus } from 'lucide-react';
-
+import { useAuth } from "@/context/AuthContext";
 // Button component styled for the neon theme
 const Button: FC<{
   children: ReactNode;
@@ -184,29 +184,40 @@ const LoginForm: FC = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    if (!validateForm()) return;
 
-    setIsLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      if (formData.email === 'demo@example.com' && formData.password === 'password123') {
-        alert('Login successful! Welcome back! (This is a demo)');
-      } else {
-        setErrors({ general: 'Invalid email or password. Try demo@example.com / password123' });
-      }
-    }, 1500);
-  };
 
-  const handleDemoLogin = () => {
-    setFormData({
-      email: 'demo@example.com',
-      password: 'password123'
+// Inside LoginForm
+const { login } = useAuth();
+
+const handleSubmit = async () => {
+  if (!validateForm()) return;
+
+  setIsLoading(true);
+  try {
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
     });
-    setErrors({});
-  };
+    const data = await res.json();
+
+    if (!res.ok) {
+      setErrors({ general: data.error || "Login failed" });
+      return;
+    }
+
+    login(data.user); // <-- set user in context
+    window.location.href = "/play";
+  } catch (err: any) {
+    setErrors({ general: err.message || "Something went wrong" });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+
+
+
 
   return (
     <div className="min-h-screen text-slate-100 flex items-center justify-center py-12 px-4">
@@ -219,16 +230,6 @@ const LoginForm: FC = () => {
               Welcome Back
             </h1>
             <p className="text-slate-400">Sign in to your FlashCard Frenzy account</p>
-          </div>
-
-          {/* Demo Login Helper */}
-          <div className="mb-6 p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-            <p className="text-cyan-300 text-sm mb-2">
-              <strong>Demo Mode:</strong> Try the app with sample credentials
-            </p>
-            <Button variant="ghost" size="sm" onClick={handleDemoLogin} className="text-xs">
-              Fill Demo Credentials
-            </Button>
           </div>
 
           {/* General Error Message */}

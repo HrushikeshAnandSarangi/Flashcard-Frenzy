@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import FuturisticNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AuthProvider } from "@/context/AuthContext";
+import type { Session } from "@supabase/supabase-js";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,17 +23,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const initialSession: Session | null = null; 
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <FuturisticNavbar/>
-        {children}
-        <Footer/>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <AuthProvider >
+          <FuturisticNavbar />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

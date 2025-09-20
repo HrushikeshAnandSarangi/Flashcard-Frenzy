@@ -229,11 +229,6 @@ const SignUpForm: FC = () => {
       newErrors.confirmPassword = 'Passwords do not match';
     }
 
-    // Terms agreement validation
-    if (!agreedToTerms) {
-      newErrors.terms = 'You must agree to the Terms of Service';
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -248,15 +243,41 @@ const SignUpForm: FC = () => {
 
   const handleSubmit = async () => {
     if (!validateForm()) return;
-
+  
     setIsLoading(true);
+  
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password
+        })
+      });
     
-    // Simulate API call
-    setTimeout(() => {
+      const data = await res.json();
+    
+      if (!res.ok) {
+        setErrors({ api: data.error || "Signup failed" });
+        setIsLoading(false);
+        return;
+      }
+    
+      // Optionally store user in localStorage for session persistence
+      localStorage.setItem("user", JSON.stringify(data.user));
+    
+      // Redirect or show success
+      alert("Account created successfully!");
+      setFormData({ username: "", email: "", password: "", confirmPassword: "" });
+    } catch (error: any) {
+      setErrors({ api: error.message || "Something went wrong" });
+    } finally {
       setIsLoading(false);
-      alert('Account created successfully! (This is a demo)');
-    }, 2000);
+    }
   };
+
 
   return (
     <div className="min-h-screen text-slate-100 flex items-center justify-center py-12 px-4">
