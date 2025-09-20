@@ -273,13 +273,6 @@ const handleSubmit = async () => {
               />
             </div>
 
-            {/* Forgot Password */}
-            <div className="text-right">
-              <a href="#" className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
-                Forgot password?
-              </a>
-            </div>
-
             {/* Submit Button */}
             <Button
               variant="cta"
@@ -312,16 +305,6 @@ const handleSubmit = async () => {
         </div>
 
         {/* Quick Access Card */}
-        <div className="mt-6 bg-slate-900/30 backdrop-blur-sm border border-cyan-500/10 rounded-lg p-6 text-center">
-          <h3 className="text-lg font-semibold text-slate-100 mb-2">New to FlashCard Frenzy?</h3>
-          <p className="text-slate-400 text-sm mb-4">
-            Join thousands of learners competing in fast-paced flashcard battles
-          </p>
-          <Button variant="primary" className="w-full">
-            <UserPlus className="h-4 w-4 mr-2" />
-            Create Free Account
-          </Button>
-        </div>
       </div>
     </div>
   )

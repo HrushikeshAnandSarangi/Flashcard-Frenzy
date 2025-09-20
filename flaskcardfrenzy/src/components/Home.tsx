@@ -96,17 +96,13 @@ const LandingPage: FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-cyan-400">Why You'll Love It</h2>
             <p className="mt-4 text-slate-400 max-w-xl mx-auto">Everything you need to make learning an epic adventure.</p>
           </div>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="text-center p-8 bg-slate-900/50 rounded-lg border border-cyan-500/20 hover:border-cyan-400/40 transition-colors duration-300">
               <Zap className="h-10 w-10 mx-auto text-cyan-400" />
               <h3 className="mt-4 text-xl font-bold text-slate-100">Real-Time Battles</h3>
               <p className="mt-2 text-slate-400">Challenge friends or rivals to a fast-paced flashcard duel.</p>
             </div>
-            <div className="text-center p-8 bg-slate-900/50 rounded-lg border border-cyan-500/20 hover:border-cyan-400/40 transition-colors duration-300">
-              <Users className="h-10 w-10 mx-auto text-cyan-400" />
-              <h3 className="mt-4 text-xl font-bold text-slate-100">Create & Share Decks</h3>
-              <p className="mt-2 text-slate-400">Build your own custom decks for any subject and share them.</p>
-            </div>
+
             <div className="text-center p-8 bg-slate-900/50 rounded-lg border border-cyan-500/20 hover:border-cyan-400/40 transition-colors duration-300">
               <BrainCircuit className="h-10 w-10 mx-auto text-cyan-400" />
               <h3 className="mt-4 text-xl font-bold text-slate-100">Track Your Progress</h3>

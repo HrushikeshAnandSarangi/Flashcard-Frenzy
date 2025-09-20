@@ -355,35 +355,6 @@ const SignUpForm: FC = () => {
             </div>
 
             {/* Terms Agreement */}
-            <div className="space-y-4">
-              <label className="flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={agreedToTerms}
-                  onChange={(e) => {
-                    setAgreedToTerms(e.target.checked);
-                    if (errors.terms) setErrors(prev => ({ ...prev, terms: '' }));
-                  }}
-                  className="w-5 h-5 text-cyan-500 bg-slate-900 border-slate-600 rounded focus:ring-cyan-500 focus:ring-2 focus:ring-offset-0 mt-0.5"
-                />
-                <span className="text-sm text-slate-300 leading-5">
-                  I agree to the{' '}
-                  <a href="#" className="text-cyan-400 hover:text-cyan-300 underline">
-                    Terms of Service
-                  </a>{' '}
-                  and{' '}
-                  <a href="#" className="text-cyan-400 hover:text-cyan-300 underline">
-                    Privacy Policy
-                  </a>
-                </span>
-              </label>
-              {errors.terms && (
-                <div className="flex items-center text-red-400 text-sm">
-                  <AlertCircle className="h-4 w-4 mr-1" />
-                  {errors.terms}
-                </div>
-              )}
-            </div>
 
             {/* Submit Button */}
             <Button

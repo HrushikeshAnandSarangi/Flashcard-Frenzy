@@ -143,27 +143,19 @@ const HowToPlayPage: FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-cyan-400 mb-4">Game Overview</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">FlashCard Frenzy is a fast-paced, competitive learning game where speed and accuracy determine victory.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             <Card className="text-center">
               <Users className="h-10 w-10 mx-auto text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold text-slate-100 mb-2">1-4 Players</h3>
-              <p className="text-slate-400">Battle solo or with friends in real-time matches</p>
+              <h3 className="text-lg font-bold text-slate-100 mb-2">2-4 Players</h3>
+              <p className="text-slate-400">Battle with friends in real-time matches</p>
             </Card>
             <Card className="text-center">
               <Clock className="h-10 w-10 mx-auto text-cyan-400 mb-4" />
               <h3 className="text-lg font-bold text-slate-100 mb-2">5-15 Minutes</h3>
               <p className="text-slate-400">Quick matches that fit any schedule</p>
             </Card>
-            <Card className="text-center">
-              <BookOpen className="h-10 w-10 mx-auto text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold text-slate-100 mb-2">Any Subject</h3>
-              <p className="text-slate-400">Math, Science, Languages, History & more</p>
-            </Card>
-            <Card className="text-center">
-              <Trophy className="h-10 w-10 mx-auto text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold text-slate-100 mb-2">Ranked Play</h3>
-              <p className="text-slate-400">Climb leaderboards and earn achievements</p>
-            </Card>
+
+
           </div>
         </Section>
 
@@ -181,10 +173,8 @@ const HowToPlayPage: FC = () => {
               description="Start by either creating your own game room or joining an existing one."
               icon={<Play className="h-8 w-8 text-cyan-400" />}
               details={[
-                "Choose a flashcard deck from our library or upload your own",
-                "Set game duration (5, 10, or 15 minutes)",
-                "Invite friends with a room code or join public matches",
-                "Wait for other players to join (1-4 players total)"
+                "Invite friends with a room code or join a match",
+                "Wait for other players to join (2-4 players total)"
               ]}
             />
 
@@ -195,9 +185,6 @@ const HowToPlayPage: FC = () => {
               icon={<Zap className="h-8 w-8 text-cyan-400" />}
               details={[
                 "Each correct answer earns you points",
-                "Faster answers earn bonus points",
-                "Wrong answers give you a brief penalty",
-                "Questions get progressively harder as you advance"
               ]}
             />
 
@@ -208,9 +195,6 @@ const HowToPlayPage: FC = () => {
               icon={<Target className="h-8 w-8 text-cyan-400" />}
               details={[
                 "See live scores and positions during the match",
-                "Earn power-ups for answer streaks",
-                "Use freeze, double points, or hint power-ups",
-                "Maintain your streak for maximum points"
               ]}
             />
 
@@ -220,9 +204,6 @@ const HowToPlayPage: FC = () => {
               description="The player with the most points when time runs out wins the match and earns rewards."
               icon={<Trophy className="h-8 w-8 text-cyan-400" />}
               details={[
-                "Gain XP and climb the global leaderboard",
-                "Unlock new badges and achievements",
-                "Access harder difficulty levels",
                 "Track your learning progress over time"
               ]}
             />
@@ -236,7 +217,7 @@ const HowToPlayPage: FC = () => {
             <p className="text-slate-400 max-w-2xl mx-auto">Understanding how points are calculated will help you maximize your score</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-6xl mx-auto">
             <Card>
               <h3 className="text-xl font-bold text-slate-100 mb-4 flex items-center">
                 <Star className="h-6 w-6 text-cyan-400 mr-2" />
@@ -245,132 +226,18 @@ const HowToPlayPage: FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Correct Answer</span>
-                  <span className="text-cyan-400 font-bold">+100 pts</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Speed Bonus (under 3s)</span>
-                  <span className="text-cyan-400 font-bold">+50 pts</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Lightning Fast (under 1s)</span>
-                  <span className="text-cyan-400 font-bold">+100 pts</span>
+                  <span className="text-cyan-400 font-bold">+10 pts</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Wrong Answer</span>
-                  <span className="text-red-400 font-bold">-25 pts</span>
-                </div>
-              </div>
-            </Card>
-
-            <Card>
-              <h3 className="text-xl font-bold text-slate-100 mb-4 flex items-center">
-                <Zap className="h-6 w-6 text-cyan-400 mr-2" />
-                Streak Multipliers
-              </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">5 Correct in a Row</span>
-                  <span className="text-cyan-400 font-bold">1.5x multiplier</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">10 Correct in a Row</span>
-                  <span className="text-cyan-400 font-bold">2x multiplier</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">15 Correct in a Row</span>
-                  <span className="text-cyan-400 font-bold">2.5x multiplier</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">20+ Correct in a Row</span>
-                  <span className="text-cyan-400 font-bold">3x multiplier</span>
+                  <span className="text-red-400 font-bold">0 pts</span>
                 </div>
               </div>
             </Card>
           </div>
         </Section>
 
-        {/* Power-ups Section */}
-        <Section id="powerups">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-cyan-400 mb-4">Power-ups & Strategy</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">Master these power-ups to gain the competitive edge</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
-            <Card className="text-center">
-              <div className="w-12 h-12 bg-blue-500/20 border border-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-6 w-6 text-blue-400" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-100 mb-2">Freeze Time</h3>
-              <p className="text-slate-400 mb-3">Pauses the timer for 10 seconds, giving you extra thinking time</p>
-              <span className="text-blue-400 text-sm">Earned after 3 correct answers</span>
-            </Card>
 
-            <Card className="text-center">
-              <div className="w-12 h-12 bg-yellow-500/20 border border-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="h-6 w-6 text-yellow-400" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-100 mb-2">Double Points</h3>
-              <p className="text-slate-400 mb-3">Next correct answer is worth 2x points and bonuses</p>
-              <span className="text-yellow-400 text-sm">Earned after 5 correct answers</span>
-            </Card>
-
-            <Card className="text-center">
-              <div className="w-12 h-12 bg-green-500/20 border border-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="h-6 w-6 text-green-400" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-100 mb-2">Hint</h3>
-              <p className="text-slate-400 mb-3">Eliminates 2 wrong answers from multiple choice questions</p>
-              <span className="text-green-400 text-sm">Earned after 7 correct answers</span>
-            </Card>
-          </div>
-        </Section>
-
-        {/* Tips Section */}
-        <Section id="tips">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-cyan-400 mb-4">Pro Tips</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">Level up your game with these expert strategies</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <Card>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">Speed vs Accuracy</h3>
-              <p className="text-slate-400 mb-4">While speed bonuses are tempting, maintaining accuracy is crucial for building streak multipliers.</p>
-              <div className="flex items-center text-cyan-400">
-                <ArrowRight className="h-4 w-4 mr-2" />
-                <span className="text-sm">Aim for 90%+ accuracy to maximize streaks</span>
-              </div>
-            </Card>
-
-            <Card>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">Power-up Timing</h3>
-              <p className="text-slate-400 mb-4">Save your Double Points power-up for difficult questions that you're confident about.</p>
-              <div className="flex items-center text-cyan-400">
-                <ArrowRight className="h-4 w-4 mr-2" />
-                <span className="text-sm">Use strategically for maximum point gain</span>
-              </div>
-            </Card>
-
-            <Card>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">Study Your Decks</h3>
-              <p className="text-slate-400 mb-4">Practice with flashcard decks in study mode before jumping into competitive matches.</p>
-              <div className="flex items-center text-cyan-400">
-                <ArrowRight className="h-4 w-4 mr-2" />
-                <span className="text-sm">Familiarity leads to faster response times</span>
-              </div>
-            </Card>
-
-            <Card>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">Stay Calm Under Pressure</h3>
-              <p className="text-slate-400 mb-4">When behind, focus on building a streak rather than rushing to catch up.</p>
-              <div className="flex items-center text-cyan-400">
-                <ArrowRight className="h-4 w-4 mr-2" />
-                <span className="text-sm">Consistent play beats desperate moves</span>
-              </div>
-            </Card>
-          </div>
-        </Section>
 
         {/* Call to Action */}
         <Section className="text-center bg-slate-900/30 border-t border-cyan-500/30 mt-20">
